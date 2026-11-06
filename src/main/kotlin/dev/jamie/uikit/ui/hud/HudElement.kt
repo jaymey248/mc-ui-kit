@@ -30,7 +30,7 @@ data class Size(val w: Float, val h: Float)
  * changes. Subclasses implement [draw] at local origin (0,0) and return the size they used; [preview]
  * is true in the editor so elements can show example content when they have nothing live to show.
  *
- * A mod says when an element counts by overriding [available] and [activeNow]; the kit knows nothing
+ * A mod says when an element counts through [availableWhen] and [activeWhen]; the kit knows nothing
  * of the mod's features or worlds. Register with [HudManager.register], open [dev.jamie.uikit.ui.screen.HudEditorScreen].
  */
 abstract class HudElement(
@@ -72,10 +72,13 @@ abstract class HudElement(
         internal set
 
     /** Switched on at all, whatever is going on in the game (its feature's toggle, say). Off: never drawn, and not in the editor. */
-    open val available: Boolean get() = true
+    var availableWhen: () -> Boolean = { true }
 
     /** Should show right now (the player is where it works, say). Not active: the editor greys it and hides it behind "Show inactive". */
-    open val activeNow: Boolean get() = true
+    var activeWhen: () -> Boolean = { true }
+
+    val available: Boolean get() = availableWhen()
+    val activeNow: Boolean get() = activeWhen()
 
     /** Should this render in normal gameplay? */
     open fun shouldRender(): Boolean = available && activeNow

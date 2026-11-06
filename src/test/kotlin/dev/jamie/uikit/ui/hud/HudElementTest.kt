@@ -62,11 +62,10 @@ class HudElementTest {
     @Test fun elementsAreOnUnlessTheModSaysOtherwise() {
         val plain = Box()
         assertTrue(plain.shouldRender())
-        val inactive = object : HudElement("i", "I") {
-            override val activeNow get() = false
-            override fun draw(c: Canvas, preview: Boolean) = Size(1f, 1f)
-        }
+        val inactive = Box().apply { activeWhen = { false } }
         assertFalse(inactive.shouldRender())
         assertTrue(inactive.available)
+        val off = Box().apply { availableWhen = { false } }
+        assertFalse(off.shouldRender())
     }
 }

@@ -45,7 +45,8 @@ object Sample : ClientModInitializer {
 
     /** Only shows at times: the editor greys it, and hides it behind "Show inactive" when it is not showing. */
     val sprint = object : HudElement("sprint", "Sprinting", Anchor.LEFT, 6f, 0f) {
-        override val activeNow get() = mc.player?.isSprinting == true
+        init { activeWhen = { mc.player?.isSprinting == true } }
+
         override fun draw(c: Canvas, preview: Boolean): Size {
             panel(c, 50f, 13f, background.value)
             c.text("Sprinting", PAD_X, 3f, Theme.success)

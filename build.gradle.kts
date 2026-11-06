@@ -53,6 +53,10 @@ kotlin {
     }
 }
 
+tasks.named<Jar>("sourcesJar") {
+    from(rootProject.file("LICENSE"))
+}
+
 tasks.withType<JavaCompile>().configureEach {
     options.encoding = "UTF-8"
     options.release.set(javaVersion)
