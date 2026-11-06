@@ -1,0 +1,15 @@
+.gradle/
+build/
+.kotlin/
+versions/*/build/
+versions/*/.gradle/
+consumer-plugin/.gradle/
+consumer-plugin/build/
+consumer-plugin/.kotlin/
+sample/.gradle/
+sample/build/
+sample/.kotlin/
+sample/versions/*/build/
+sample/run/
+.idea/
+*.iml
