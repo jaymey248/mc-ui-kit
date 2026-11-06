@@ -57,3 +57,13 @@ tasks.withType<JavaCompile>().configureEach {
     options.encoding = "UTF-8"
     options.release.set(javaVersion)
 }
+
+// A bare client with no mod of its own, to try finished jars together: put them in run/<version>/mods.
+// -Duikit.vmargs="-Dsample.dev=check" passes flags on to them.
+loom {
+    runConfigs.all {
+        runDir = "../../run/$mcVersion"
+        System.getProperty("uikit.vmargs")?.split(' ')?.forEach { vmArg(it) }
+        programArgs("--width", "1280", "--height", "720")
+    }
+}

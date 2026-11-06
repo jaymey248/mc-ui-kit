@@ -11,5 +11,7 @@ sample/build/
 sample/.kotlin/
 sample/versions/*/build/
 sample/run/
+sample/versions/*/.gradle/
+run/
 .idea/
 *.iml

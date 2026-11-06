@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${version}",
+  "name": "UI Kit Sample",
+  "description": "The smallest mod on mc-ui-kit: copy it to start a mod.",
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [{ "adapter": "kotlin", "value": "dev.jamie.uikitsample.Sample" }]
+  },
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${mc_range}",
+    "fabric-language-kotlin": ">=${fabric_kotlin_version}"
+  }
+}
